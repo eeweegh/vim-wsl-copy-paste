@@ -11,15 +11,15 @@ if executable('clip.exe')
   function! SetClip(type, ...) abort
     if a:0
       " Visual mode
-      normal! gv"+y
+      normal! gv"9y
     elseif a:type ==# 'line'
-      normal! '[V']"+y
+      normal! '[V']"9y
     elseif a:type ==# 'char'
-      normal! `[v`]"+y
+      normal! `[v`]"9y
     endif
 
     " From https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows/50281147#50281147
-    call system('clip.exe', @+)
+    call system('clip.exe', @9)
   endfunction
 
   nnoremap <silent> cy      :set operatorfunc=SetClip<cr>g@
